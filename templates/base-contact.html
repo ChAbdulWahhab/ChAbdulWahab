@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ch. Abdul Wahab - Software Engineer{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/user.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body data-aos="fade" class="bg-white text-gray-900 leading-relaxed">
+
+    <!-- Navigation -->
+    <nav style="backdrop-filter: blur(20px); left: 50%; transform: translateX(-50%);" class="fixed top-3 w-[90%] max-w-[480px] bg-white/60 backdrop-blur-sm rounded-2xl z-30 shadow-lg border border-gray-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-lg sm:text-xl font-semibold text-gray-900">
+                    <a href="{{ url_for('index') }}">C.AW</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="{{ url_for('experience') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Experience</a>
+                    <a href="{{ url_for('all_projects') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
+                    <a href="{{ url_for('contact') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <div class="md:hidden flex space-x-6">
+                    <a href="{{ url_for('experience') }}" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">Experience</a>
+                    <a href="{{ url_for('all_projects') }}" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">Projects</a>
+                    <a href="{{ url_for('contact') }}" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dynamic Page Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+
+    <!-- Scripts -->
+     <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("{{ url_for('static', filename='sw.js') }}")
+            .then(reg => console.log('Service Worker registered:', reg.scope))
+            .catch(err => console.error('Service Worker registration failed:', err));
+        }
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>

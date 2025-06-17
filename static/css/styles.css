@@ -1,0 +1,99 @@
+body {
+  font-family: "Inter", "DM Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb #f9fafb;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.fullscreen-viewer {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.fullscreen-viewer:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.zoom-image {
+  transition: transform 0.4s ease;
+  cursor: zoom-in;
+}
+
+.zoom-image:active {
+  transform: scale(1.8);
+  cursor: zoom-out;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.tech-pill {
+  transition: all 0.2s ease;
+}
+
+.tech-pill:hover {
+  transform: scale(1.05);
+  background-color: #374151;
+  color: white;
+}
+
+/* Modal scroll lock */
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 640px) {
+  .zoom-image:active {
+    transform: scale(1.2);
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - Ch. Abdul Wahab</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/user.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white text-gray-900 leading-relaxed min-h-screen flex flex-col">
+
+    <!-- 500 Content -->
+    <main class="flex-1 flex items-center justify-center px-4 sm:px-6 pt-24 sm:pt-28 pb-16 sm:pb-20">
+        <div class="max-w-2xl mx-auto text-center">
+            <!-- 500 Number -->
+            <div class="mb-8 sm:mb-12">
+                <h1 class="text-8xl sm:text-9xl lg:text-[12rem] font-light text-gray-200 leading-none select-none">
+                    500
+                </h1>
+            </div>
+
+            <!-- Error Message -->
+            <div class="mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">
+                    Internal Server Error
+                </h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-lg mx-auto leading-relaxed">
+                    Something went wrong on our end. We're working to fix this issue. 
+                    Please try again in a few moments or contact me if the problem persists.
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <button onclick="location.reload()" 
+                        class="px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm sm:text-base font-medium">
+                    Try Again
+                </button>
+                <a href="{{ url_for('index') }}" 
+                   class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-gray-900 hover:text-gray-900 transition-colors text-sm sm:text-base font-medium">
+                    Go Home
+                </a>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="mt-12 sm:mt-16">
+                <p class="text-sm text-gray-500 mb-4">Need immediate assistance?</p>
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                    <a href="mailto:chabdulwahhab@yahoo.com" class="text-gray-600 hover:text-gray-900 transition-colors text-sm underline underline-offset-4">
+                        Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/ceo-dexiter/" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors text-sm underline underline-offset-4">
+                        LinkedIn
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="text-gray-600 hover:text-gray-900 transition-colors text-sm underline underline-offset-4">
+                        Contact Form
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-sm text-gray-500">
+                © 2024 Ch. Abdul Wahab. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

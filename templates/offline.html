@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Ch. Abdul Wahab - Software Engineer</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/user.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white text-gray-900 leading-relaxed min-h-screen flex flex-col">
+
+    <!-- Offline Content -->
+    <main class="flex-1 flex items-center justify-center px-4 sm:px-6 pt-24 sm:pt-28 pb-16 sm:pb-20">
+        <div class="max-w-2xl mx-auto text-center">
+            <!-- Offline Icon -->
+            <div class="mb-8 sm:mb-12">
+                <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-12.728 12.728m0 0L12 12m-6.364 6.364L12 12m6.364-6.364L12 12"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Offline Message -->
+            <div class="mb-8 sm:mb-12">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6">
+                    You're Currently Offline
+                </h1>
+                <p class="text-base sm:text-lg text-gray-600 max-w-lg mx-auto leading-relaxed mb-6">
+                    It looks like you've lost your internet connection. Please check your network settings and try again.
+                </p>
+                
+                <!-- Connection Status -->
+                <div id="connection-status" class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-6">
+                    <div class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></div>
+                    <span>No Internet Connection</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-8">
+                <button onclick="location.reload()" 
+                        class="px-6 sm:px-8 py-3 sm:py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm sm:text-base font-medium">
+                    Try Again
+                </button>
+                <button onclick="history.back()" 
+                        class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-gray-900 hover:text-gray-900 transition-colors text-sm sm:text-base font-medium">
+                    Go Back
+                </button>
+            </div>
+
+            <!-- Helpful Tips -->
+            <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 text-left max-w-lg mx-auto">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">While you're offline:</h3>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Check your Wi-Fi or mobile data connection
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Make sure airplane mode is turned off
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Try refreshing the page once you're back online
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-sm text-gray-500">
+                © 2024 Ch. Abdul Wahab. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Connection Status Script -->
+    <script>
+        function updateConnectionStatus() {
+            const statusElement = document.getElementById('connection-status');
+            const dot = statusElement.querySelector('div');
+            const text = statusElement.querySelector('span');
+            
+            if (navigator.onLine) {
+                dot.className = 'w-2 h-2 bg-green-400 rounded-full mr-2';
+                text.textContent = 'Connection Restored';
+                statusElement.className = 'inline-flex items-center px-4 py-2 bg-green-50 rounded-full text-sm text-green-600 mb-6';
+                
+                // Auto-reload after 2 seconds when connection is restored
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            } else {
+                dot.className = 'w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse';
+                text.textContent = 'No Internet Connection';
+                statusElement.className = 'inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600 mb-6';
+            }
+        }
+
+        // Listen for online/offline events
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+        
+        // Check connection status on load
+        updateConnectionStatus();
+    </script>
+
+</body>
+</html>
