@@ -49,16 +49,13 @@ def contact():
 body = f"""
 You have received a new message from the contact form on your portfolio website.
 
-----------------------------------------
 🧑 Name: {form.name.data}
 📧 Email: {form.email.data}
 📝 Subject: {form.subject.data}
-----------------------------------------
 
 💬 Message:
 {form.message.data}
 
-----------------------------------------
 📅 Please reply promptly to maintain a good impression.
 """
         )
